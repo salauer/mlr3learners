@@ -1,3 +1,5 @@
+# mlr3learners 0.1.6
+
 # mlr3learners 0.1.5
 
 * Added parameter and parameter dependencies to `regr.glmnet`, `regr.km`,
