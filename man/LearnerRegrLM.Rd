@@ -6,8 +6,10 @@
 \title{Linear Model Regression Learner}
 \format{\code{\link[R6:R6Class]{R6::R6Class()}} inheriting from \link[mlr3:LearnerRegr]{mlr3::LearnerRegr}.}
 \description{
-Ordinary linear regression.
-Calls \code{\link[stats:lm]{stats::lm()}}.
+Ordinary linear regression. Calls \code{\link[stats:lm]{stats::lm()}}.
+
+The importance scores are calculated using \code{-log10(p)} where \code{p} is the \eqn{p}-value.
+This transformation is necessary to ensure numerical stability for very small \eqn{p}-values.
 }
 \section{Construction}{
 \preformatted{LearnerRegrLM$new()
@@ -17,11 +19,19 @@ mlr3::lrn("regr.lm")
 }
 
 \examples{
-learner = mlr3::lrn("regr.lm")
+library(mlr3)
+learner = lrn("regr.lm")
 print(learner)
 
 # available parameters:
 learner$param_set$ids()
+
+task = tsk("mtcars")
+learner$train(task)
+summary(learner$model)
+
+pred = learner$predict(task, row_ids = head(task$row_ids))
+pred
 }
 \seealso{
 \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}
