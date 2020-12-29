@@ -13,6 +13,7 @@ test_that("all learners can be constructed without custom args", {
     "classif.multinom",
 
     "regr.cv_glmnet",
+    "regr.glm",
     "regr.glmnet",
     "regr.kknn",
     "regr.km",

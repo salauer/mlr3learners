@@ -31,6 +31,7 @@ register_mlr3 = function() {
 
   # regression learners
   x$add("regr.cv_glmnet", LearnerRegrCVGlmnet)
+  x$add("regr.glm", LearnerRegrGLM)
   x$add("regr.glmnet", LearnerRegrGlmnet)
   x$add("regr.kknn", LearnerRegrKKNN)
   x$add("regr.km", LearnerRegrKM)
